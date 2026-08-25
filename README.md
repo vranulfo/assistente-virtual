@@ -37,12 +37,8 @@ python -m http.server 8000
 
 Abra `http://127.0.0.1:8000/` ou `http://127.0.0.1:8000/admin.html`.
 
-<<<<<<< HEAD
-- `http://127.0.0.1:8000/`
-- `http://127.0.0.1:8000/admin.html`
 =======
 ## Publicar na Vercel
->>>>>>> 3297f25 (Limpa documentacao para publicacao)
 
 O projeto possui `vercel.json` e funciona sem manter um servidor local ligado. A Vercel executa a API sob demanda e publica o frontend no mesmo dominio.
 
@@ -54,17 +50,3 @@ O projeto possui `vercel.json` e funciona sem manter um servidor local ligado. A
 
 Depois da configuracao, cada push na branch de producao gera um novo deploy automaticamente. Pushes em outras branches criam deployments de preview, uteis para testar mudancas sem alterar a apresentacao principal.
 
-## Fluxo de branches
-
-`main` contem a versao inicial publicada. A branch `apresentacao` e usada para alteracoes:
-
-```powershell
-git switch apresentacao
-git add .
-git commit -m "Atualiza projeto"
-git push origin apresentacao
-```
-
-Na Vercel, escolha `main` como **Production Branch** para manter a versao inicial como apresentacao. Para apresentar alteracoes, altere essa opcao para `apresentacao` ou use o link do deployment de preview.
-
-Nunca publique o arquivo `.env`. Use as variaveis de ambiente da Vercel para as credenciais do banco.
