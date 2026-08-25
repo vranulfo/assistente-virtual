@@ -1,4 +1,12 @@
 let tamanhoFonte = 1;
+const mensagemInicial = 'Clique em uma pergunta acima para ver a resposta.';
+
+function restaurarMenuInicial() {
+  speechSynthesis.cancel();
+  const respostaDiv = document.getElementById('resposta');
+  respostaDiv.innerHTML = `<p>${mensagemInicial}</p>`;
+  respostaDiv.classList.add('mostrar');
+}
 
 function fazerPergunta(pergunta) {
   fetch(`${API_BASE_URL}/responder`, {
@@ -57,16 +65,15 @@ function carregarPerguntas() {
       const container = document.getElementById('botoes');
       container.innerHTML = '';
 
-      // pega só a primeira pergunta cadastrada
-      const perguntaInicial = data.perguntas[0];
-
-      if (perguntaInicial) {
+      data.perguntas.forEach(pergunta => {
         const btn = document.createElement('button');
         btn.className = 'btn btn-lg btn-primary m-2';
-        btn.innerText = perguntaInicial;
-        btn.onclick = () => fazerPergunta(perguntaInicial);
+        btn.innerText = pergunta;
+        btn.onclick = () => fazerPergunta(pergunta);
         container.appendChild(btn);
-      }
+      });
+
+      restaurarMenuInicial();
     });
 }
 
