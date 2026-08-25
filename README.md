@@ -81,8 +81,6 @@ python -m http.server 8000
 
 Abra:
 
-- `http://127.0.0.1:8000/`
-- `http://127.0.0.1:8000/admin.html`
 
 O frontend usa `http://127.0.0.1:5000` por padrão. Para outro endereço, defina `window.APP_CONFIG.API_BASE_URL` antes de `frontend/js/config.js`.
 
