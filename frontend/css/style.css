@@ -1,0 +1,40 @@
+body.alto-contraste {
+  background-color: #000;
+  color: #FFD700;
+}
+
+body.alto-contraste .btn {
+  background-color: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+body.alto-contraste .alert-info {
+  background-color: #000;
+  color: #FFD700;
+  border-color: #FFD700;
+}
+
+
+.alert-info {
+  background-color: #fff;
+  color: #000;
+}
+
+button {
+  font-size: 1.2rem;
+}
+
+.chatbot-resposta {
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.chatbot-resposta.mostrar {
+  opacity: 1;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistente de Letramento Digital</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body class="bg-dark text-white">
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4">👩‍💻 Assistente de Letramento Digital</h1>
+
+    <div id="resposta" class="alert alert-info text-dark fs-5 mostrar chatbot-resposta" role="alert">
+      Clique em uma pergunta acima para ver a resposta.
+    </div>
+
+    <div id="botoes" class="d-flex flex-wrap justify-content-center gap-3 mb-4"></div>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+      <button class="btn btn-outline-light" onclick="aumentarFonte()">A+</button>
+      <button class="btn btn-outline-light" onclick="diminuirFonte()">A-</button>
+      <button class="btn btn-outline-light" onclick="alternarContraste()">Alto Contraste</button>
+      <button class="btn btn-outline-light" onclick="resetarAcessibilidade()">Resetar</button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    carregarPerguntas(); // Chama a função que busca perguntas do backend
+  </script>
+</body>
+</html>
