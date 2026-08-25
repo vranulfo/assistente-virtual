@@ -11,6 +11,10 @@
       "dest": "/api/index.py"
     },
     {
+      "src": "/",
+      "dest": "/frontend/index.html"
+    },
+    {
       "src": "/admin.html",
       "dest": "/frontend/admin.html"
     },
