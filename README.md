@@ -1,65 +1,66 @@
 # Assistente de Letramento Digital
 
-Aplicacao web com frontend acessivel e API Flask para consultar e cadastrar respostas de letramento digital.
+Aplicacao web acessivel para consultar respostas de letramento digital. A versao da Vercel usa um arquivo JSON, sem banco externo.
 
 ## Estrutura
 
-- `frontend/`: paginas HTML, estilos e JavaScript
-- `backend/`: aplicacao Flask e acesso ao MySQL
-- `api/index.py`: entrada da API para a Vercel
-- `schema.sql`: estrutura inicial do banco de dados
+- `frontend/`: paginas, estilos e scripts
+- `backend/`: API Flask
+- `backend/data/respostas.json`: perguntas e respostas publicadas
+- `api/index.py`: entrada da API na Vercel
 
-## Executar localmente
+## Publicar na Vercel
 
-1. Crie um banco MySQL e execute o conteudo de `schema.sql`.
-2. Copie `.env.example` para `.env` e preencha as credenciais do banco:
+1. Na Vercel, importe o repositorio `vranulfo/assistente-virtual`.
+2. Mantenha **Root Directory** como `./` e o preset **Flask**.
+3. Nao preencha variaveis `DB_*`; esta versao nao usa MySQL.
+4. Clique em **Deploy**.
 
-```powershell
-Copy-Item .env.example .env
+A Vercel hospeda o frontend e executa a API automaticamente. Nao e necessario manter terminal, Flask ou `.venv` abertos.
+
+## Adicionar ou alterar respostas
+
+O painel `/admin.html` permite testar o cadastro localmente, mas a Vercel nao grava alteracoes no arquivo JSON de forma permanente. Para publicar uma nova resposta:
+
+1. Abra `backend/data/respostas.json`.
+2. Adicione um objeto neste formato:
+
+```json
+{
+  "id": 7,
+  "pergunta": "como criar uma senha segura?",
+  "resposta": "Use uma senha longa, unica e dificil de adivinhar.",
+  "proxima_pergunta": "como proteger minha conta?",
+  "imagem": null
+}
 ```
 
-3. Instale as dependencias e inicie o backend:
+3. Use um `id` diferente em cada objeto. Se houver varias perguntas, mantenha todos dentro de uma lista entre `[` e `]`, separados por virgula.
+4. Teste localmente e publique:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python backend/app.py
+```
+
+Em outro terminal, abra o frontend local ou use o deploy atual para consultar. Depois:
+
+```powershell
+git switch alteracao-vercel
+git add backend/data/respostas.json
+git commit -m "Atualiza respostas"
+git push origin alteracao-vercel
+```
+
+A Vercel criara um deployment de preview para a branch. Para atualizar a apresentacao principal, faca merge da branch para `main` no GitHub ou selecione `alteracao-vercel` como **Production Branch** na Vercel.
+
+## Desenvolvimento local
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-Set-Location backend
-python app.py
+python backend/app.py
 ```
 
-4. Em outro terminal, sirva o frontend:
-
-```powershell
-Set-Location frontend
-python -m http.server 8000
-```
-
-Abra `http://127.0.0.1:8000/` ou `http://127.0.0.1:8000/admin.html`.
-
-## Publicar na Vercel
-
-O projeto possui `vercel.json` e funciona sem manter um servidor local ligado. A Vercel executa a API sob demanda e publica o frontend no mesmo dominio.
-
-1. Na Vercel, selecione **Add New Project** e importe este repositorio do GitHub.
-2. Use a raiz do repositorio como **Root Directory** e selecione **Other** como framework.
-3. Em **Settings > Environment Variables**, cadastre `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD` e `DB_NAME`.
-4. Use um MySQL hospedado e acessivel pela internet. Um banco instalado apenas no seu computador nao funciona na Vercel.
-5. Faca o primeiro deploy e teste `https://SEU_PROJETO.vercel.app/api/health`.
-
-Depois da configuracao, cada push na branch de producao gera um novo deploy automaticamente. Pushes em outras branches criam deployments de preview, uteis para testar mudancas sem alterar a apresentacao principal.
-
-## Fluxo de branches
-
-`main` contem a versao inicial publicada. A branch `apresentacao` e usada para alteracoes:
-
-```powershell
-git switch apresentacao
-git add .
-git commit -m "Atualiza projeto"
-git push origin apresentacao
-```
-
-Na Vercel, escolha `main` como **Production Branch** para manter a versao inicial como apresentacao. Para apresentar alteracoes, altere essa opcao para `apresentacao` ou use o link do deployment de preview.
-
-Nunca publique o arquivo `.env`. Use as variaveis de ambiente da Vercel para as credenciais do banco.
+O backend fica em `http://127.0.0.1:5000`. O frontend pode ser servido com `python -m http.server 8000` dentro de `frontend`.
