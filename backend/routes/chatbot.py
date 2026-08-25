@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
 
 from models.database import (
+    _carregar_respostas,
     adicionar_resposta,
     buscar_pergunta,
     editar_resposta,
-    get_connection,
     listar_perguntas,
 )
 
@@ -61,24 +61,14 @@ def editar(id_resposta):
 
 @chatbot_bp.route('/perguntas_detalhadas', methods=['GET'])
 def perguntas_detalhadas():
-    conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT id, pergunta, resposta, proxima_pergunta, imagem FROM respostas')
-    resultados = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    resultados = _carregar_respostas()
     return jsonify({'perguntasDetalhadas': resultados})
 
 
 @chatbot_bp.route('/health', methods=['GET'])
 def health():
     try:
-        conn = get_connection()
-        cursor = conn.cursor()
-        cursor.execute('SELECT 1')
-        cursor.fetchone()
-        cursor.close()
-        conn.close()
+        _carregar_respostas()
         return jsonify({'status': 'ok', 'database': 'ok'})
     except Exception:
         return jsonify({'status': 'error', 'database': 'unavailable'}), 503

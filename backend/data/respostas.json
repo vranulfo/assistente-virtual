@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "pergunta": "como usar o whatsapp",
+    "resposta": "Você precisa instalar o aplicativo e criar uma conta com seu número.",
+    "proxima_pergunta": "",
+    "imagem": null
+  },
+  {
+    "id": 2,
+    "pergunta": "como ligar o computador",
+    "resposta": "Pressione o botão de ligar, geralmente na parte frontal.",
+    "proxima_pergunta": "",
+    "imagem": null
+  },
+  {
+    "id": 3,
+    "pergunta": "como acesso a internet?",
+    "resposta": "Ligue o computador e clique no ícone com o nome Google Chrome.",
+    "proxima_pergunta": "",
+    "imagem": null
+  },
+  {
+    "id": 4,
+    "pergunta": "como abro o documento de texto?",
+    "resposta": "Selecione o aplicativo referente ao editor de texto e comece a digitar o seu documento na folha em branco.",
+    "proxima_pergunta": "Como salvo o meu documento?",
+    "imagem": null
+  },
+  {
+    "id": 5,
+    "pergunta": "como salvo o meu documento?",
+    "resposta": "Clique na opção de salvar. Ao abrir a nova janela, escreva o título do seu documento, escolha a pasta para salvar e clique em salvar.",
+    "proxima_pergunta": "",
+    "imagem": null
+  },
+  {
+    "id": 6,
+    "pergunta": "quer conhecer a barra de ferramentas do editor de texto?",
+    "resposta": "Nela estão presentes as funções: Criar novo documento, Abrir documento existente, Salvar documento, Inserir tabela, Inserir imagens e Inserir gráficos.",
+    "proxima_pergunta": "",
+    "imagem": null
+  }
+]
