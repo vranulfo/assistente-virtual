@@ -2,6 +2,9 @@
   {
     "id": 1,
     "menu_principal": true,
+    "categoria": "WhatsApp",
+    "descricao": "Mensagens, chamadas e cuidados contra golpes.",
+    "icone": "bi-whatsapp",
     "pergunta": "como usar o whatsapp?",
     "resposta": "No celular, abra a loja de aplicativos, procure por WhatsApp e confira se o desenvolvedor é WhatsApp LLC. Toque em Instalar, abra o aplicativo e siga as instruções para cadastrar seu número. Nunca informe a outra pessoa o código de confirmação recebido por SMS.",
     "proxima_pergunta": "como enviar uma mensagem no whatsapp?",
@@ -10,6 +13,9 @@
   {
     "id": 2,
     "menu_principal": true,
+    "categoria": "Computador e internet",
+    "descricao": "Comece pelo básico e aprenda a navegar.",
+    "icone": "bi-pc-display",
     "pergunta": "como ligar o computador?",
     "resposta": "Verifique se o computador está conectado à energia. Pressione uma vez o botão de ligar, normalmente identificado por um círculo com um pequeno traço. Aguarde a tela inicial aparecer e, se for solicitado, digite sua senha.",
     "proxima_pergunta": "como acessar a internet?",
@@ -25,6 +31,9 @@
   {
     "id": 4,
     "menu_principal": true,
+    "categoria": "Textos e arquivos",
+    "descricao": "Crie, salve e encontre seus documentos.",
+    "icone": "bi-file-earmark-text",
     "pergunta": "como abrir um documento de texto?",
     "resposta": "Abra um editor de texto, como Microsoft Word, LibreOffice Writer ou Documentos Google. Escolha Novo documento ou Documento em branco, clique na folha e comece a digitar.",
     "proxima_pergunta": "como salvar um documento de texto?",
@@ -49,7 +58,7 @@
     "pergunta": "como abrir o navegador?",
     "resposta": "No computador, procure na área de trabalho ou no menu Iniciar o ícone do Chrome, Edge ou Firefox e clique duas vezes. No celular, toque uma vez no Chrome ou Safari. Depois, procure a barra de endereço na parte superior.",
     "proxima_pergunta": "como pesquisar um texto na internet?",
-    "imagem": null
+    "imagem": "/img/barra-endereco.png"
   },
   {
     "id": 8,
@@ -89,6 +98,9 @@
   {
     "id": 13,
     "menu_principal": true,
+    "categoria": "Imagens",
+    "descricao": "Pesquise, salve e use imagens corretamente.",
+    "icone": "bi-image",
     "pergunta": "como pesquisar imagens na internet?",
     "resposta": "Acesse google.com, digite o que deseja encontrar e faça a pesquisa. Depois, escolha Imagens abaixo da barra de pesquisa. Toque ou clique em uma imagem para vê-la maior.",
     "proxima_pergunta": "como salvar uma imagem da internet?|posso usar qualquer imagem da internet?",
@@ -111,6 +123,9 @@
   {
     "id": 16,
     "menu_principal": true,
+    "categoria": "Vídeos",
+    "descricao": "Encontre vídeos, legendas e fontes confiáveis.",
+    "icone": "bi-play-btn",
     "pergunta": "como pesquisar vídeos na internet?",
     "resposta": "Acesse youtube.com ou faça uma pesquisa no Google e escolha Vídeos. Digite o assunto na barra de pesquisa, como aula de informática para iniciantes, e pressione Enter ou toque na lupa.",
     "proxima_pergunta": "como assistir a um vídeo na internet?|como identificar um vídeo confiável?",
@@ -140,10 +155,13 @@
   {
     "id": 20,
     "menu_principal": true,
+    "categoria": "Gmail e e-mail",
+    "descricao": "Crie sua conta e envie mensagens com segurança.",
+    "icone": "bi-envelope-at",
     "pergunta": "como criar uma conta no gmail?",
     "resposta": "Digite accounts.google.com/signup na barra do navegador e confirme que o endereço termina em google.com. Preencha seu nome, escolha um endereço de e-mail, crie uma senha forte e siga as etapas de confirmação. Faça isso em um aparelho confiável.",
     "proxima_pergunta": "como criar uma senha segura?|como entrar no gmail?",
-    "imagem": null
+    "imagem": "/img/criar-email.png"
   },
   {
     "id": 21,
@@ -204,6 +222,9 @@
   {
     "id": 29,
     "menu_principal": true,
+    "categoria": "Segurança digital",
+    "descricao": "Reconheça sites, notícias e mensagens suspeitas.",
+    "icone": "bi-shield-check",
     "pergunta": "como saber se um site é confiável?",
     "resposta": "Confira o endereço completo e procure erros de escrita ou nomes parecidos com o original. O cadeado indica conexão protegida, mas não garante que o site seja honesto. Para bancos, compras e serviços públicos, digite o endereço oficial ou use o aplicativo oficial.",
     "proxima_pergunta": "como saber se uma notícia é verdadeira?|o que fazer se eu cair em um golpe?",
@@ -256,6 +277,6 @@
     "pergunta": "como reconhecer uma mensagem falsa no whatsapp?",
     "resposta": "Desconfie de pedidos urgentes de dinheiro, links encurtados, prêmios e pessoas dizendo que mudaram de número. Confirme a história por ligação para um número que você já conhece. Nunca compartilhe o código de seis dígitos do WhatsApp.",
     "proxima_pergunta": "o que fazer se eu cair em um golpe?",
-    "imagem": null
+    "imagem": "/img/mensagem-suspeita.png"
   }
 ]

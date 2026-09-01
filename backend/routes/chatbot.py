@@ -49,6 +49,21 @@ def perguntas():
     })
 
 
+@chatbot_bp.route('/catalogo', methods=['GET'])
+def catalogo():
+    resultados = [
+        {
+            'pergunta': item['pergunta'],
+            'categoria': item.get('categoria', 'Outros'),
+            'descricao': item.get('descricao', ''),
+            'icone': item.get('icone', 'bi-question-circle'),
+        }
+        for item in _carregar_respostas()
+        if item.get('menu_principal', False)
+    ]
+    return jsonify({'categorias': resultados})
+
+
 @chatbot_bp.route('/editar/<int:id_resposta>', methods=['PUT'])
 def editar(id_resposta):
     data = request.json or {}
