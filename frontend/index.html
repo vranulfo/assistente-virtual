@@ -10,27 +10,61 @@
 </head>
 <body class="bg-dark text-white">
 
-  <div class="container py-5">
-    <h1 class="text-center mb-4">👩‍💻 Assistente de Letramento Digital</h1>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+
+  <main id="conteudo-principal" class="container py-4 py-md-5">
+    <header class="text-center mb-4">
+      <p class="eyebrow mb-2">Aprenda no seu ritmo</p>
+      <h1>👩‍💻 Assistente de Letramento Digital</h1>
+      <p class="lead text-white-50">Orientações simples e seguras para usar a tecnologia.</p>
+    </header>
+
+    <section class="search-panel mb-4" aria-labelledby="titulo-busca">
+      <label id="titulo-busca" for="busca" class="form-label fw-semibold">O que você quer aprender?</label>
+      <div class="input-group input-group-lg">
+        <span class="input-group-text" aria-hidden="true"><i class="bi bi-search"></i></span>
+        <input id="busca" type="search" class="form-control" placeholder="Exemplo: criar uma conta no Gmail" autocomplete="off">
+        <button id="limpar-busca" class="btn btn-outline-secondary" type="button" hidden>Limpar</button>
+      </div>
+      <p id="status-busca" class="form-text mb-0 mt-2" aria-live="polite"></p>
+    </section>
+
+    <div id="progresso" class="progress-panel mb-3" hidden aria-live="polite">
+      <span class="badge rounded-pill text-bg-primary" id="etapa-atual">Etapa 1</span>
+      <span id="pergunta-atual" class="fw-semibold"></span>
+    </div>
 
     <div id="resposta" class="alert alert-info text-dark fs-5 mostrar chatbot-resposta" role="alert" aria-live="polite">
       Escolha um assunto abaixo para começar.
     </div>
 
-    <div id="botoes" class="d-flex flex-wrap justify-content-center gap-3 mb-4"></div>
+    <section aria-label="Opções do assistente">
+      <div id="botoes" class="menu-grid mb-4"></div>
+    </section>
 
-    <div class="mt-4 d-flex flex-wrap justify-content-center gap-3" aria-label="Controles de acessibilidade">
+    <div id="controles-leitura" class="reading-controls mb-4" hidden aria-label="Controles de leitura em voz alta">
+      <button id="ouvir-resposta" class="btn btn-light" type="button"><i class="bi bi-volume-up" aria-hidden="true"></i> Ouvir ou repetir resposta</button>
+      <button id="parar-leitura" class="btn btn-outline-light" type="button"><i class="bi bi-stop-circle" aria-hidden="true"></i> Parar leitura</button>
+      <label for="velocidade-voz" class="visually-hidden">Velocidade da leitura</label>
+      <select id="velocidade-voz" class="form-select velocidade-voz" aria-label="Velocidade da leitura">
+        <option value="0.75">Leitura lenta</option>
+        <option value="1" selected>Leitura normal</option>
+        <option value="1.25">Leitura rápida</option>
+      </select>
+    </div>
+
+    <div class="accessibility-bar mt-4" aria-label="Controles de acessibilidade">
+      <span class="accessibility-label"><i class="bi bi-universal-access" aria-hidden="true"></i> Acessibilidade</span>
       <button class="btn btn-outline-light" onclick="aumentarFonte()" aria-label="Aumentar o tamanho da fonte">A+</button>
       <button class="btn btn-outline-light" onclick="diminuirFonte()" aria-label="Diminuir o tamanho da fonte">A-</button>
-      <button class="btn btn-outline-light" onclick="alternarContraste()">Alto Contraste</button>
+      <button class="btn btn-outline-light" onclick="alternarContraste()">Alto contraste</button>
+      <button class="btn btn-outline-light" onclick="alternarMovimento()">Reduzir animações</button>
       <button class="btn btn-outline-light" onclick="resetarAcessibilidade()">Resetar</button>
     </div>
-  </div>
+  </main>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    carregarPerguntas(); // Chama a função que busca perguntas do backend
-  </script>
+  <script>inicializarAssistente();</script>
 </body>
 </html>

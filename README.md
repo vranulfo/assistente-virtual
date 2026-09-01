@@ -64,3 +64,13 @@ python backend/app.py
 ```
 
 O backend fica em `http://127.0.0.1:5000`. O frontend pode ser servido com `python -m http.server 8000` dentro de `frontend`.
+
+## Testes automáticos
+
+Com o ambiente virtual ativo e as dependências instaladas, execute:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+Os testes verificam a estrutura do JSON, IDs duplicados, encadeamento dos fluxos, imagens locais e os principais endpoints da API.
