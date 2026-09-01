@@ -1,44 +1,254 @@
 [
   {
     "id": 1,
-    "pergunta": "como usar o whatsapp",
-    "resposta": "Você precisa instalar o aplicativo e criar uma conta com seu número.",
-    "proxima_pergunta": "",
+    "pergunta": "como usar o whatsapp?",
+    "resposta": "No celular, abra a loja de aplicativos, procure por WhatsApp e confira se o desenvolvedor é WhatsApp LLC. Toque em Instalar, abra o aplicativo e siga as instruções para cadastrar seu número. Nunca informe a outra pessoa o código de confirmação recebido por SMS.",
+    "proxima_pergunta": "como enviar uma mensagem no whatsapp?",
     "imagem": null
   },
   {
     "id": 2,
-    "pergunta": "como ligar o computador",
-    "resposta": "Pressione o botão de ligar, geralmente na parte frontal.",
-    "proxima_pergunta": "",
+    "pergunta": "como ligar o computador?",
+    "resposta": "Verifique se o computador está conectado à energia. Pressione uma vez o botão de ligar, normalmente identificado por um círculo com um pequeno traço. Aguarde a tela inicial aparecer e, se for solicitado, digite sua senha.",
+    "proxima_pergunta": "como acessar a internet?",
     "imagem": null
   },
   {
     "id": 3,
-    "pergunta": "como acesso a internet?",
-    "resposta": "Ligue o computador e clique no ícone com o nome Google Chrome.",
-    "proxima_pergunta": "",
+    "pergunta": "como acessar a internet?",
+    "resposta": "Primeiro, conecte o computador ou celular a uma rede Wi-Fi ou à internet móvel. Depois, abra um navegador, como Google Chrome, Microsoft Edge, Mozilla Firefox ou Safari.",
+    "proxima_pergunta": "como abrir o navegador?",
     "imagem": null
   },
   {
     "id": 4,
-    "pergunta": "como abro o documento de texto?",
-    "resposta": "Selecione o aplicativo referente ao editor de texto e comece a digitar o seu documento na folha em branco.",
-    "proxima_pergunta": "Como salvo o meu documento?",
+    "pergunta": "como abrir um documento de texto?",
+    "resposta": "Abra um editor de texto, como Microsoft Word, LibreOffice Writer ou Documentos Google. Escolha Novo documento ou Documento em branco, clique na folha e comece a digitar.",
+    "proxima_pergunta": "como salvar um documento de texto?",
     "imagem": null
   },
   {
     "id": 5,
-    "pergunta": "como salvo o meu documento?",
-    "resposta": "Clique na opção de salvar. Ao abrir a nova janela, escreva o título do seu documento, escolha a pasta para salvar e clique em salvar.",
-    "proxima_pergunta": "",
+    "pergunta": "como salvar um documento de texto?",
+    "resposta": "Clique em Arquivo e depois em Salvar ou Salvar como. Escolha uma pasta fácil de encontrar, digite um nome para o documento e clique em Salvar. Você também pode pressionar Ctrl e S ao mesmo tempo.",
+    "proxima_pergunta": "como encontrar um arquivo salvo?",
     "imagem": null
   },
   {
     "id": 6,
-    "pergunta": "quer conhecer a barra de ferramentas do editor de texto?",
-    "resposta": "Nela estão presentes as funções: Criar novo documento, Abrir documento existente, Salvar documento, Inserir tabela, Inserir imagens e Inserir gráficos.",
-    "proxima_pergunta": "",
+    "pergunta": "como usar a barra de ferramentas do editor de texto?",
+    "resposta": "A barra de ferramentas reúne botões para criar, abrir e salvar documentos, mudar as letras, alinhar o texto e inserir imagens ou tabelas. Passe o ponteiro sobre um botão para ver o nome da função antes de clicar.",
+    "proxima_pergunta": "como salvar um documento de texto?",
+    "imagem": null
+  },
+  {
+    "id": 7,
+    "pergunta": "como abrir o navegador?",
+    "resposta": "No computador, procure na área de trabalho ou no menu Iniciar o ícone do Chrome, Edge ou Firefox e clique duas vezes. No celular, toque uma vez no Chrome ou Safari. Depois, procure a barra de endereço na parte superior.",
+    "proxima_pergunta": "como pesquisar um texto na internet?",
+    "imagem": null
+  },
+  {
+    "id": 8,
+    "pergunta": "como pesquisar um texto na internet?",
+    "resposta": "Clique na barra de endereço, digite palavras que descrevam o que você procura e pressione Enter ou toque na lupa. Por exemplo: horário de funcionamento posto de saúde Campinas. Quanto mais clara for a pesquisa, melhores serão os resultados.",
+    "proxima_pergunta": "como abrir um resultado da pesquisa?|como saber se um site é confiável?|como pesquisar imagens na internet?",
+    "imagem": null
+  },
+  {
+    "id": 9,
+    "pergunta": "como abrir um resultado da pesquisa?",
+    "resposta": "Leia o título, o resumo e o endereço de cada resultado. Clique no título que parecer mais adequado. Para voltar à lista, use a seta para a esquerda. Dê preferência a sites oficiais ao procurar serviços públicos, bancos ou informações de saúde.",
+    "proxima_pergunta": "como voltar para a página anterior?|como saber se um site é confiável?",
+    "imagem": null
+  },
+  {
+    "id": 10,
+    "pergunta": "como voltar para a página anterior?",
+    "resposta": "Clique ou toque na seta apontando para a esquerda, normalmente no canto superior esquerdo do navegador. Você pode usá-la várias vezes para retornar às páginas visitadas anteriormente.",
+    "proxima_pergunta": "como abrir uma nova aba no navegador?",
+    "imagem": null
+  },
+  {
+    "id": 11,
+    "pergunta": "como abrir uma nova aba no navegador?",
+    "resposta": "Clique no sinal de mais (+) ao lado da aba aberta. Uma nova aba permite visitar outro site sem fechar a página atual. Para alternar entre páginas, clique nas abas na parte superior.",
+    "proxima_pergunta": "como fechar uma aba do navegador?",
+    "imagem": null
+  },
+  {
+    "id": 12,
+    "pergunta": "como fechar uma aba do navegador?",
+    "resposta": "Clique no X da aba que deseja fechar. Se fechar uma aba por engano no computador, pressione Ctrl, Shift e T ao mesmo tempo para reabri-la.",
+    "proxima_pergunta": "como pesquisar um texto na internet?",
+    "imagem": null
+  },
+  {
+    "id": 13,
+    "pergunta": "como pesquisar imagens na internet?",
+    "resposta": "Acesse google.com, digite o que deseja encontrar e faça a pesquisa. Depois, escolha Imagens abaixo da barra de pesquisa. Toque ou clique em uma imagem para vê-la maior.",
+    "proxima_pergunta": "como salvar uma imagem da internet?|posso usar qualquer imagem da internet?",
+    "imagem": null
+  },
+  {
+    "id": 14,
+    "pergunta": "como salvar uma imagem da internet?",
+    "resposta": "No computador, clique com o botão direito sobre a imagem, escolha Salvar imagem como, selecione uma pasta e clique em Salvar. No celular, mantenha o dedo sobre a imagem e escolha Fazer download ou Salvar imagem. Não baixe arquivos de páginas suspeitas.",
+    "proxima_pergunta": "como encontrar um arquivo baixado?|posso usar qualquer imagem da internet?",
+    "imagem": null
+  },
+  {
+    "id": 15,
+    "pergunta": "posso usar qualquer imagem da internet?",
+    "resposta": "Nem toda imagem encontrada na internet pode ser reutilizada, pois ela pode ter direitos autorais. Para trabalhos, procure imagens com licença de uso permitida e informe o nome do autor e a fonte quando necessário.",
+    "proxima_pergunta": "como pesquisar vídeos na internet?",
+    "imagem": null
+  },
+  {
+    "id": 16,
+    "pergunta": "como pesquisar vídeos na internet?",
+    "resposta": "Acesse youtube.com ou faça uma pesquisa no Google e escolha Vídeos. Digite o assunto na barra de pesquisa, como aula de informática para iniciantes, e pressione Enter ou toque na lupa.",
+    "proxima_pergunta": "como assistir a um vídeo na internet?|como identificar um vídeo confiável?",
+    "imagem": null
+  },
+  {
+    "id": 17,
+    "pergunta": "como assistir a um vídeo na internet?",
+    "resposta": "Clique ou toque no título ou na imagem do vídeo. Use o botão com triângulo para reproduzir ou pausar. O alto-falante controla o som, a engrenagem abre as configurações e o símbolo de cantos amplia para tela cheia.",
+    "proxima_pergunta": "como ativar legendas em um vídeo?|como identificar um vídeo confiável?",
+    "imagem": null
+  },
+  {
+    "id": 18,
+    "pergunta": "como ativar legendas em um vídeo?",
+    "resposta": "No YouTube, clique ou toque no botão CC quando ele estiver disponível. Em alguns vídeos, também é possível abrir a engrenagem, escolher Legendas e selecionar Português. As legendas automáticas podem conter erros.",
+    "proxima_pergunta": "como identificar um vídeo confiável?",
+    "imagem": null
+  },
+  {
+    "id": 19,
+    "pergunta": "como identificar um vídeo confiável?",
+    "resposta": "Confira quem publicou, a data e se o vídeo informa suas fontes. Compare a informação com sites oficiais ou outros canais confiáveis. Muitas visualizações não garantem que o conteúdo seja verdadeiro.",
+    "proxima_pergunta": "como saber se uma notícia é verdadeira?",
+    "imagem": null
+  },
+  {
+    "id": 20,
+    "pergunta": "como criar uma conta no gmail?",
+    "resposta": "Digite accounts.google.com/signup na barra do navegador e confirme que o endereço termina em google.com. Preencha seu nome, escolha um endereço de e-mail, crie uma senha forte e siga as etapas de confirmação. Faça isso em um aparelho confiável.",
+    "proxima_pergunta": "como criar uma senha segura?|como entrar no gmail?",
+    "imagem": null
+  },
+  {
+    "id": 21,
+    "pergunta": "como criar uma senha segura?",
+    "resposta": "Crie uma senha longa, exclusiva e difícil de adivinhar, combinando palavras, números e símbolos. Não use nome, data de nascimento ou a mesma senha de outra conta. Guarde-a em um gerenciador de senhas ou local seguro e nunca a envie por mensagem.",
+    "proxima_pergunta": "como proteger minha conta do gmail?|como entrar no gmail?",
+    "imagem": null
+  },
+  {
+    "id": 22,
+    "pergunta": "como entrar no gmail?",
+    "resposta": "Acesse gmail.com, clique em Fazer login, digite seu e-mail e depois sua senha. Em computador público ou de outra pessoa, não marque a opção para manter a conta conectada e lembre-se de sair ao terminar.",
+    "proxima_pergunta": "como enviar um e-mail pelo gmail?|como sair da conta do gmail?",
+    "imagem": null
+  },
+  {
+    "id": 23,
+    "pergunta": "como enviar um e-mail pelo gmail?",
+    "resposta": "No Gmail, clique em Escrever. No campo Para, digite o e-mail do destinatário. Preencha o Assunto, escreva a mensagem e confira o endereço antes de clicar em Enviar. Não envie senhas, códigos de confirmação ou dados bancários.",
+    "proxima_pergunta": "como anexar um arquivo no gmail?|como responder um e-mail?",
+    "imagem": null
+  },
+  {
+    "id": 24,
+    "pergunta": "como anexar um arquivo no gmail?",
+    "resposta": "Enquanto escreve o e-mail, clique no clipe de papel. Localize o arquivo, selecione-o e aguarde o carregamento terminar. Confira se anexou o arquivo correto antes de enviar, principalmente se ele tiver informações pessoais.",
+    "proxima_pergunta": "como responder um e-mail?",
+    "imagem": null
+  },
+  {
+    "id": 25,
+    "pergunta": "como responder um e-mail?",
+    "resposta": "Abra a mensagem recebida, role até o final e clique em Responder. Digite sua resposta e clique em Enviar. Antes de abrir links ou anexos, confirme se conhece o remetente e se esperava a mensagem.",
+    "proxima_pergunta": "como reconhecer um e-mail falso?|como sair da conta do gmail?",
+    "imagem": null
+  },
+  {
+    "id": 26,
+    "pergunta": "como sair da conta do gmail?",
+    "resposta": "Clique na sua foto ou na letra do seu nome, no canto superior direito, e escolha Sair. Em aparelho compartilhado, feche também todas as abas. Isso ajuda a impedir que outra pessoa leia seus e-mails.",
+    "proxima_pergunta": "como proteger minha conta do gmail?",
+    "imagem": null
+  },
+  {
+    "id": 27,
+    "pergunta": "como proteger minha conta do gmail?",
+    "resposta": "Ative a verificação em duas etapas nas configurações da Conta Google, mantenha telefone e e-mail de recuperação atualizados e revise os aparelhos conectados. O Google não pede sua senha nem códigos por e-mail, mensagem ou ligação.",
+    "proxima_pergunta": "como reconhecer um e-mail falso?",
+    "imagem": null
+  },
+  {
+    "id": 28,
+    "pergunta": "como reconhecer um e-mail falso?",
+    "resposta": "Desconfie de mensagens urgentes, prêmios inesperados, ameaças de bloqueio e pedidos de senha, código ou pagamento. Confira o endereço completo do remetente sem clicar em links. Em dúvida, entre no site oficial digitando o endereço no navegador.",
+    "proxima_pergunta": "como saber se um site é confiável?|o que fazer se eu cair em um golpe?",
+    "imagem": null
+  },
+  {
+    "id": 29,
+    "pergunta": "como saber se um site é confiável?",
+    "resposta": "Confira o endereço completo e procure erros de escrita ou nomes parecidos com o original. O cadeado indica conexão protegida, mas não garante que o site seja honesto. Para bancos, compras e serviços públicos, digite o endereço oficial ou use o aplicativo oficial.",
+    "proxima_pergunta": "como saber se uma notícia é verdadeira?|o que fazer se eu cair em um golpe?",
+    "imagem": null
+  },
+  {
+    "id": 30,
+    "pergunta": "como saber se uma notícia é verdadeira?",
+    "resposta": "Leia além do título, confira a data, o autor e o site. Procure a mesma informação em outras fontes confiáveis e em sites oficiais. Não compartilhe enquanto estiver em dúvida; imagens e vídeos também podem ser antigos ou alterados.",
+    "proxima_pergunta": "como pesquisar um texto na internet?",
+    "imagem": null
+  },
+  {
+    "id": 31,
+    "pergunta": "o que fazer se eu cair em um golpe?",
+    "resposta": "Pare de responder e não faça novos pagamentos. Troque as senhas envolvidas usando um aparelho seguro. Se informou dados bancários, fale com o banco pelos canais oficiais. Guarde mensagens e comprovantes, registre um boletim de ocorrência e avise seus contatos se sua conta foi invadida.",
+    "proxima_pergunta": "como criar uma senha segura?",
+    "imagem": null
+  },
+  {
+    "id": 32,
+    "pergunta": "como encontrar um arquivo baixado?",
+    "resposta": "No computador, abra o Explorador de Arquivos e entre em Downloads. No celular, abra Arquivos ou Meus Arquivos e procure Downloads. Organize os arquivos em pastas e apague somente aquilo que você reconhece.",
+    "proxima_pergunta": "como encontrar um arquivo salvo?",
+    "imagem": null
+  },
+  {
+    "id": 33,
+    "pergunta": "como encontrar um arquivo salvo?",
+    "resposta": "Abra o Explorador de Arquivos no computador ou Arquivos no celular. Entre na pasta escolhida ao salvar, como Documentos, Downloads ou Imagens. Se não lembrar o local, use a busca e digite parte do nome do arquivo.",
+    "proxima_pergunta": "como abrir um documento de texto?",
+    "imagem": null
+  },
+  {
+    "id": 34,
+    "pergunta": "como enviar uma mensagem no whatsapp?",
+    "resposta": "Abra o WhatsApp, toque no botão de nova conversa, escolha um contato, escreva no campo de mensagem e toque em enviar. Confira o nome do contato antes de mandar fotos, documentos ou informações pessoais.",
+    "proxima_pergunta": "como fazer uma chamada de vídeo no whatsapp?",
+    "imagem": null
+  },
+  {
+    "id": 35,
+    "pergunta": "como fazer uma chamada de vídeo no whatsapp?",
+    "resposta": "Abra a conversa da pessoa e toque no ícone de câmera no alto da tela. Autorize o uso da câmera e do microfone se solicitado. Faça chamadas apenas com contatos conhecidos e encerre tocando no botão vermelho.",
+    "proxima_pergunta": "como reconhecer uma mensagem falsa no whatsapp?",
+    "imagem": null
+  },
+  {
+    "id": 36,
+    "pergunta": "como reconhecer uma mensagem falsa no whatsapp?",
+    "resposta": "Desconfie de pedidos urgentes de dinheiro, links encurtados, prêmios e pessoas dizendo que mudaram de número. Confirme a história por ligação para um número que você já conhece. Nunca compartilhe o código de seis dígitos do WhatsApp.",
+    "proxima_pergunta": "o que fazer se eu cair em um golpe?",
     "imagem": null
   }
 ]
