@@ -41,7 +41,12 @@ def adicionar():
 
 @chatbot_bp.route('/perguntas', methods=['GET'])
 def perguntas():
-    return jsonify({'perguntas': listar_perguntas()})
+    apenas_menu_principal = request.args.get('menu') == 'principal'
+    return jsonify({
+        'perguntas': listar_perguntas(
+            apenas_menu_principal=apenas_menu_principal
+        )
+    })
 
 
 @chatbot_bp.route('/editar/<int:id_resposta>', methods=['PUT'])
