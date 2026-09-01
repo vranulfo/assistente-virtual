@@ -1,5 +1,5 @@
 let tamanhoFonte = 1;
-const mensagemInicial = 'Clique em uma pergunta acima para ver a resposta.';
+const mensagemInicial = 'Escolha um assunto abaixo para começar.';
 
 function restaurarMenuInicial() {
   speechSynthesis.cancel();
@@ -59,7 +59,7 @@ function fazerPergunta(pergunta) {
 }
 
 function carregarPerguntas() {
-  fetch(`${API_BASE_URL}/perguntas`)
+  fetch(`${API_BASE_URL}/perguntas?menu=principal`)
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('botoes');

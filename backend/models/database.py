@@ -19,8 +19,14 @@ def _salvar_respostas(respostas):
     )
 
 
-def listar_perguntas():
-    return [item['pergunta'] for item in _carregar_respostas()]
+def listar_perguntas(apenas_menu_principal=False):
+    respostas = _carregar_respostas()
+    if apenas_menu_principal:
+        respostas = [
+            item for item in respostas
+            if item.get('menu_principal', False)
+        ]
+    return [item['pergunta'] for item in respostas]
 
 
 def buscar_pergunta(pergunta):
