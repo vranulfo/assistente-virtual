@@ -16,6 +16,8 @@ body {
   background: radial-gradient(circle at top, #263a63 0, #111827 48%, #080d18 100%) !important;
 }
 
+.login-container { max-width: 480px; }
+
 button, input, select { font-size: 1rem !important; }
 button, a, input, select { transition: transform 0.2s ease, box-shadow 0.2s ease; }
 

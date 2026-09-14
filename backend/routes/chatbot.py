@@ -1,12 +1,15 @@
 from flask import Blueprint, jsonify, request
 
+from auth import admin_required
 from models.database import (
     _carregar_respostas,
     adicionar_resposta,
     buscar_pergunta,
     editar_resposta,
     listar_perguntas,
+    usando_postgres,
 )
+from models.metrics import registrar_tempo, resumir_tempos
 
 chatbot_bp = Blueprint('chatbot', __name__)
 
@@ -25,6 +28,7 @@ def responder():
 
 
 @chatbot_bp.route('/adicionar', methods=['POST'])
+@admin_required
 def adicionar():
     data = request.json or {}
     pergunta = data.get('pergunta', '').strip().lower()
@@ -65,6 +69,7 @@ def catalogo():
 
 
 @chatbot_bp.route('/editar/<int:id_resposta>', methods=['PUT'])
+@admin_required
 def editar(id_resposta):
     data = request.json or {}
     pergunta = data.get('pergunta', '').strip().lower()
@@ -80,6 +85,7 @@ def editar(id_resposta):
 
 
 @chatbot_bp.route('/perguntas_detalhadas', methods=['GET'])
+@admin_required
 def perguntas_detalhadas():
     resultados = _carregar_respostas()
     return jsonify({'perguntasDetalhadas': resultados})
@@ -89,6 +95,26 @@ def perguntas_detalhadas():
 def health():
     try:
         _carregar_respostas()
-        return jsonify({'status': 'ok', 'database': 'ok'})
+        return jsonify({
+            'status': 'ok',
+            'database': 'ok',
+            'armazenamento': 'postgres' if usando_postgres() else 'json',
+        })
     except Exception:
         return jsonify({'status': 'error', 'database': 'unavailable'}), 503
+
+
+@chatbot_bp.route('/metricas/tempo', methods=['POST'])
+def registrar_metrica_tempo():
+    data = request.json or {}
+    try:
+        registrar_tempo(data.get('tela', ''), data.get('duracao_segundos', 0))
+    except (AttributeError, TypeError, ValueError):
+        return jsonify({'mensagem': 'Métrica inválida.'}), 400
+    return jsonify({'mensagem': 'Métrica registrada.'}), 201
+
+
+@chatbot_bp.route('/metricas/tempo', methods=['GET'])
+@admin_required
+def listar_metricas_tempo():
+    return jsonify({'metricas': resumir_tempos()})

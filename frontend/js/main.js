@@ -4,8 +4,35 @@ let respostaAtual = '';
 let historico = [];
 let todasPerguntas = [];
 let categorias = [];
+let telaEmMedicao = null;
+let inicioMedicao = null;
 
 const mensagemInicial = 'Escolha um assunto abaixo para começar.';
+
+function iniciarMedicao(tela) {
+  finalizarMedicao();
+  telaEmMedicao = tela;
+  inicioMedicao = performance.now();
+}
+
+function finalizarMedicao() {
+  if (!telaEmMedicao || inicioMedicao === null) return;
+  const duracaoSegundos = (performance.now() - inicioMedicao) / 1000;
+  const payload = JSON.stringify({
+    tela: telaEmMedicao,
+    duracao_segundos: Number(duracaoSegundos.toFixed(2)),
+  });
+  telaEmMedicao = null;
+  inicioMedicao = null;
+  if (duracaoSegundos < 1) return;
+
+  fetch(`${API_BASE_URL}/metricas/tempo`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: payload,
+    keepalive: true,
+  }).catch(() => {});
+}
 
 function criarBotao(texto, classes, icone, aoClicar) {
   const botao = document.createElement('button');
@@ -60,6 +87,7 @@ function restaurarMenuInicial() {
   respostaDiv.replaceChildren(paragrafo);
   respostaDiv.classList.add('mostrar');
   renderizarMenu();
+  iniciarMedicao('Menu principal');
 }
 
 function atualizarProgresso(pergunta) {
@@ -131,6 +159,7 @@ function fazerPergunta(pergunta, registrarHistorico = true) {
       renderizarNavegacao(Array.isArray(data.proximas) ? data.proximas : []);
       respostaDiv.setAttribute('tabindex', '-1');
       respostaDiv.focus({preventScroll: true});
+      iniciarMedicao(`Resposta: ${pergunta}`);
     })
     .catch(() => {
       document.getElementById('resposta').textContent = 'Erro ao conectar com o servidor. Tente novamente.';
@@ -243,4 +272,14 @@ function inicializarAssistente() {
   document.getElementById('ouvir-resposta').addEventListener('click', lerResposta);
   document.getElementById('parar-leitura').addEventListener('click', pararLeitura);
   window.addEventListener('beforeunload', pararLeitura);
+  window.addEventListener('pagehide', finalizarMedicao);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      finalizarMedicao();
+    } else if (perguntaAtual) {
+      iniciarMedicao(`Resposta: ${perguntaAtual}`);
+    } else {
+      iniciarMedicao('Menu principal');
+    }
+  });
 }

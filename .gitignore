@@ -9,3 +9,4 @@ node_modules/
 .vercel/
 backup-*.sql
 Thumbs.db
+backend/data/metricas.json
