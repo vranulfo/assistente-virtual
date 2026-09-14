@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -11,6 +12,7 @@ sys.path.insert(0, str(BACKEND_DIR))
 
 from app import app  # noqa: E402
 from models.database import buscar_pergunta, listar_perguntas  # noqa: E402
+from models import metrics  # noqa: E402
 
 
 class RespostasDataTest(unittest.TestCase):
@@ -78,18 +80,51 @@ class ApiTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         app.config.update(TESTING=True)
-        cls.client = app.test_client()
+
+    def setUp(self):
+        os.environ['ADMIN_PASSWORD'] = 'senha-de-teste'
+        self.client = app.test_client()
+
+    def tearDown(self):
+        os.environ.pop('ADMIN_PASSWORD', None)
+
+    def fazer_login(self):
+        return self.client.post('/admin/login', json={'senha': 'senha-de-teste'})
 
     def test_health(self):
         resposta = self.client.get('/health')
         self.assertEqual(resposta.status_code, 200)
         self.assertEqual(resposta.get_json()['status'], 'ok')
+        self.assertEqual(resposta.get_json()['armazenamento'], 'json')
 
     def test_catalogo(self):
         resposta = self.client.get('/catalogo')
         dados = resposta.get_json()
         self.assertEqual(resposta.status_code, 200)
         self.assertEqual(len(dados['categorias']), 7)
+
+    def test_admin_exige_login(self):
+        resposta = self.client.get('/admin.html')
+        self.assertEqual(resposta.status_code, 302)
+        self.assertIn('/login.html', resposta.location)
+
+    def test_login_rejeita_senha_incorreta(self):
+        resposta = self.client.post('/admin/login', json={'senha': 'errada'})
+        self.assertEqual(resposta.status_code, 401)
+
+    def test_login_libera_admin(self):
+        self.assertEqual(self.fazer_login().status_code, 200)
+        resposta = self.client.get('/admin.html')
+        try:
+            self.assertEqual(resposta.status_code, 200)
+        finally:
+            resposta.close()
+
+    def test_rota_de_edicao_exige_login(self):
+        resposta = self.client.post('/adicionar', json={
+            'pergunta': 'teste', 'resposta': 'teste',
+        })
+        self.assertEqual(resposta.status_code, 401)
 
     def test_responder_pergunta(self):
         resposta = self.client.post(
@@ -108,6 +143,34 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(resposta.mimetype, 'image/png')
         finally:
             resposta.close()
+
+    def test_registra_e_lista_tempo_medio(self):
+        arquivo_original = metrics.METRICS_FILE
+        arquivo_teste = BACKEND_DIR / 'data' / 'metricas-teste.json'
+        metrics.METRICS_FILE = arquivo_teste
+        try:
+            arquivo_teste.write_text('{}\n', encoding='utf-8')
+            resposta = self.client.post('/metricas/tempo', json={
+                'tela': 'Menu principal', 'duracao_segundos': 10,
+            })
+            self.assertEqual(resposta.status_code, 201)
+            self.client.post('/metricas/tempo', json={
+                'tela': 'Menu principal', 'duracao_segundos': 20,
+            })
+            self.fazer_login()
+            dados = self.client.get('/metricas/tempo').get_json()['metricas'][0]
+            self.assertEqual(dados['visualizacoes'], 2)
+            self.assertEqual(dados['tempo_medio_segundos'], 15)
+        finally:
+            metrics.METRICS_FILE = arquivo_original
+            if arquivo_teste.exists():
+                arquivo_teste.unlink()
+
+    def test_rejeita_metrica_invalida(self):
+        resposta = self.client.post('/metricas/tempo', json={
+            'tela': '', 'duracao_segundos': -1,
+        })
+        self.assertEqual(resposta.status_code, 400)
 
 
 if __name__ == '__main__':

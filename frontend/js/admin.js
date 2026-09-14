@@ -1,3 +1,58 @@
+function formatarDuracao(totalSegundos) {
+  const segundos = Math.round(Number(totalSegundos) || 0);
+  const minutos = Math.floor(segundos / 60);
+  const restante = segundos % 60;
+  return minutos ? `${minutos} min ${restante} s` : `${restante} s`;
+}
+
+function verificarAutenticacao(resposta) {
+  if (resposta.status === 401) {
+    window.location.href = 'login.html';
+    throw new Error('Autenticação necessária');
+  }
+  return resposta;
+}
+
+function carregarMetricas() {
+  const corpo = document.getElementById('metricas-tempo');
+  const status = document.getElementById('status-metricas');
+  status.textContent = 'Atualizando...';
+  fetch(`${API_BASE_URL}/metricas/tempo`)
+    .then(verificarAutenticacao)
+    .then((res) => {
+      if (!res.ok) throw new Error('Métricas indisponíveis');
+      return res.json();
+    })
+    .then((data) => {
+      corpo.innerHTML = '';
+      const metricas = data.metricas || [];
+      if (!metricas.length) {
+        const linha = document.createElement('tr');
+        const celula = document.createElement('td');
+        celula.colSpan = 4;
+        celula.textContent = 'Ainda não há dados. Navegue pelo assistente por alguns segundos.';
+        linha.appendChild(celula);
+        corpo.appendChild(linha);
+      }
+      metricas.forEach((metrica) => {
+        const linha = document.createElement('tr');
+        [metrica.tela, formatarDuracao(metrica.tempo_medio_segundos),
+          String(metrica.visualizacoes), formatarDuracao(metrica.tempo_total_segundos)]
+          .forEach((valor) => {
+            const celula = document.createElement('td');
+            celula.textContent = valor;
+            linha.appendChild(celula);
+          });
+        corpo.appendChild(linha);
+      });
+      status.textContent = `Atualizado às ${new Date().toLocaleTimeString('pt-BR')}.`;
+    })
+    .catch(() => {
+      corpo.innerHTML = '<tr><td colspan="4">Não foi possível carregar as métricas.</td></tr>';
+      status.textContent = '';
+    });
+}
+
 function adicionarCampoProxima() {
   const container = document.getElementById('proximas-container');
   const grupo = document.createElement('div');
@@ -33,7 +88,7 @@ document.getElementById('form-adicionar').addEventListener('submit', function (e
   const form = document.getElementById('form-adicionar');
   const editando = form.dataset.editando === 'true';
   const request = editando
-    ? fetch(`${API_BASE_URL}/perguntas_detalhadas`).then((res) => res.json()).then((data) => {
+    ? fetch(`${API_BASE_URL}/perguntas_detalhadas`).then(verificarAutenticacao).then((res) => res.json()).then((data) => {
         const original = data.perguntasDetalhadas.find(
           (item) => item.pergunta.toLowerCase() === form.dataset.perguntaOriginal.toLowerCase()
         );
@@ -50,7 +105,7 @@ document.getElementById('form-adicionar').addEventListener('submit', function (e
         body: JSON.stringify({ pergunta, resposta, proxima: proximas, imagem_url }),
       });
 
-  request.then((res) => res.json()).then((data) => {
+  request.then(verificarAutenticacao).then((res) => res.json()).then((data) => {
     document.getElementById('mensagem').innerText = data.mensagem;
     form.reset();
     delete form.dataset.editando;
@@ -106,4 +161,12 @@ function carregarParaEdicao(pergunta) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', carregarPerguntasCadastradas);
+document.addEventListener('DOMContentLoaded', () => {
+  carregarPerguntasCadastradas();
+  carregarMetricas();
+  document.getElementById('atualizar-metricas').addEventListener('click', carregarMetricas);
+  document.getElementById('sair-admin').addEventListener('click', () => {
+    fetch(`${API_BASE_URL}/admin/logout`, {method: 'POST'})
+      .finally(() => { window.location.href = 'login.html'; });
+  });
+});
